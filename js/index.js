@@ -22,6 +22,7 @@ AFRAME.registerComponent('backgroundswitch', {
 
         this.el.addEventListener('click', evt => {
             toggleBackground(this.targetEntity.id);
+            toggleMusic(this.targetEntity.id);
         });
     },
     tick: function(t,dt){
@@ -40,8 +41,8 @@ function toggleBackground(backgroundid) {
 
 function toggleMusic(backgroundid) {
   // target the music element
-  //var element =  doc...getelemetnybyi(....)
-  // element.setAttribute("sound", "src: url(...linknaarmuziek/)")
+  var element =  document.getElementById("river");
+   element.setAttribute("sound", "src: url(assets/"+backgroundid+".mp3); autoplay: true")
 }
 
 // example system
