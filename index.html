@@ -30,19 +30,6 @@
             </a-assets>
 
 
-            <!-- box uses custom toggle-for component to toggle the monkey model -->
-            <a-box
-                some-component
-                position="3 0.5 0"
-                height="1"
-                width="1"
-                depth="1"
-                rotation="0 45 0"
-                material="src: #deloitte; color: #fff; roughness: 0.2; metalness: 0.5"
-                class="clickable"
-                toggle-for="#monkey">
-            </a-box>
-
             <!-- monkey mesh (OBJ file) animations get toggled using custom toggle event -->
             <a-obj-model id="monkey"
                 src="#mesh-obj"
@@ -72,6 +59,28 @@
             <a-box material="src: #ambassadors;" depth="0.5" height="5" width="0.7" position="2 -3 1.4"></a-box>
             <!-- Table leg left -->
             <a-box material="src: #ambassadors;" depth="0.5" height="5" width="0.7" position="-2 -3 1.4"></a-box>
+
+
+            <!-- box used for toggling BG1 -->
+            <a-box some-component position="3.5 2 -2" height="1" width="1"
+                depth="1"
+                material="src: #deloitte; color: #fff; roughness: 0.2; metalness: 0.5"
+                class="clickable" toggle-for="#monkey">
+            </a-box>
+
+            <!-- box used for toggling BG2 -->
+            <a-box some-component position="3.5 2 0" height="1" width="1"
+                depth="1"
+                material="src: #deloitte; color: #fff; roughness: 0.2; metalness: 0.5"
+                class="clickable" toggle-for="#monkey">
+            </a-box>
+
+            <!-- box used for toggling BG3 -->
+            <a-box some-component position="3.5 2 2" height="1" width="1"
+                depth="1"
+                material="src: #deloitte; color: #fff; roughness: 0.2; metalness: 0.5"
+                class="clickable" toggle-for="#monkey">
+            </a-box>
 
 
             <!-- spotlight -->
