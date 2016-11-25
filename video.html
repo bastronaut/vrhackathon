@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Hello, World! - A-Frame</title>
@@ -15,32 +16,91 @@
     <script src="build/bundle.js"></script>
 
 </head>
-    <body>
-    	<a-scene class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="">
-    		<a-assets>
-        		<video id="video" src="assets/test.mp4" autoplay="" loop="" crossorigin="anonymous" controls="" webkit-playsinline=""></video>
-      		</a-assets>
 
-		    <a-videosphere src="#video" rotation="0 180 0" material="" geometry="" scale="" position="" visible=""></a-videosphere>
-		    <canvas class="a-canvas a-grab-cursor" data-aframe-canvas="true" width="1643" height="625" style="width: 1643px; height: 625px;"></canvas>
- 			<div class="a-enter-vr" aframe-injected="">
- 				<button class="a-enter-vr-button" aframe-injected=""></button>
- 			</div>
- 			<div class="a-orientation-modal a-hidden" aframe-injected="">
- 			   	<button aframe-injected="">Exit VR</button>
- 	   		</div>
- 	   		<a-entity position="" data-aframe-default-camera="" camera="" wasd-controls="" rotation="" look-controls="" aframe-injected="" scale="" visible=""></a-entity>
-   	 		<a-entity light="" data-aframe-default-light="" aframe-injected="" position="" rotation="" scale="" visible=""></a-entity>
-   	 		<a-entity light="" position="" data-aframe-default-light="" aframe-injected="" rotation="" scale="" visible=""></a-entity>
-   	 		<canvas class="a-canvas a-grab-cursor" data-aframe-canvas="true" width="1920" height="625" style="width: 1920px; height: 625px;"></canvas>
-    		<div class="a-enter-vr" aframe-injected="">
-    			<button class="a-enter-vr-button" aframe-injected=""></button>
-    		</div>
-    		<div class="a-orientation-modal a-hidden" aframe-injected="">
-    			<button aframe-injected="">Exit VR</button>
-    		</div>
-    		<a-entity light="" data-aframe-default-light="" aframe-injected="" position="" rotation="" scale="" visible=""></a-entity>
-    		<a-entity light="" position="" data-aframe-default-light="" aframe-injected="" rotation="" scale="" visible=""></a-entity>
-    	</a-scene>
-    </body>
+<body>
+    <a-scene class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="">
+        <a-assets>
+            <video id="video" src="assets/test.mp4" autoplay="" loop="" crossorigin="anonymous" controls="" webkit-playsinline=""></video>
+            <img src="assets/deloitte.jpg"/ id="deloitte">
+            <img src="assets/table.jpg" id="ambassadors"/>
+            <img src="http://ybinstock.github.io/concert_hall_360/concerthall.jpg"/ id="sky">
+            <a-asset-item id="mesh-obj" src="assets/monkey.obj"></a-asset-item>
+            <a-asset-item id="mesh-mtl" src="assets/monkey.mtl"></a-asset-item>
+        </a-assets>
+
+        <a-box
+            some-component
+            position="3 0.5 0"
+            height="1"
+            width="1"
+            depth="1"
+            rotation="0 45 0"
+            material="src: #deloitte; color: #fff; roughness: 0.2; metalness: 0.5"
+            class="clickable"
+            toggle-for="#monkey">
+        </a-box>
+
+        <!-- monkey mesh (OBJ file) animations get toggled using custom toggle event -->
+        <a-obj-model id="monkey"
+            src="#mesh-obj"
+            mtl="#mesh-mtl"
+            position="0 1.8 0"
+            scale="0.5 0.5 0.5"
+            animation__scale="startEvents: toggleon; easing: easeOutElastic; elasticity: 400 ; property: scale; from: 0.5 0.5 0.5; to: 1.0 1.0 1.0; dur: 550;"
+            animation__pos="startEvents: toggleon; easing: easeOutElastic; elasticity: 200 ; property: position; from: 0 1.8 0; to: 0 3 1; dur: 650"
+            animation__scaleback="startEvents: toggleoff; easing: easeOutQuad; property: scale; to: 0.5 0.5 0.5; from: 1.0 1.0 1.0; dur: 350"
+            animation__posback="startEvents: toggleoff; easing: easeOutQuad; property: position; to: 0 1.8 0; from: 0 3 1; dur: 450">
+
+        </a-obj-model>
+
+        <!-- floor with logo-->
+        <a-plane
+            rotation="-90 0 0"
+            width="8"
+            height="8"
+            material="src: #ambassadors; color: #fff; roughness: 0.6; metalness: 0.2">
+        </a-plane>
+
+        <!-- spotlight -->
+        <a-light
+            rotation="-70 0 0"
+            angle="60"
+            type="spot"
+            color="rgb(235, 208, 169)"
+            position="0 5 2 "
+            penumbra="0.2">
+        </a-light>
+
+
+        <a-videosphere src="#video" rotation="0 180 0" material="" geometry="" scale="" position="" visible=""></a-videosphere>
+        <canvas class="a-canvas a-grab-cursor" data-aframe-canvas="true" width="1643" height="625" style="width: 1643px; height: 625px;"></canvas>
+
+        <div class="a-enter-vr" aframe-injected="">
+            <button class="a-enter-vr-button" aframe-injected=""></button>
+        </div>
+
+        <div class="a-orientation-modal a-hidden" aframe-injected="">
+            <button aframe-injected="">Exit VR</button>
+        </div>
+
+        <a-entity position="" data-aframe-default-camera="" camera="" wasd-controls="" rotation="" look-controls="" aframe-injected="" scale="" visible=""></a-entity>
+        <a-entity light="" data-aframe-default-light="" aframe-injected="" position="" rotation="" scale="" visible=""></a-entity>
+        <a-entity light="" position="" data-aframe-default-light="" aframe-injected="" rotation="" scale="" visible=""></a-entity>
+        <canvas class="a-canvas a-grab-cursor" data-aframe-canvas="true" width="1920" height="625" style="width: 1920px; height: 625px;"></canvas>
+
+
+        <div class="a-enter-vr" aframe-injected="">
+            <button class="a-enter-vr-button" aframe-injected=""></button>
+        </div>
+
+        <div class="a-orientation-modal a-hidden" aframe-injected="">
+            <button aframe-injected="">Exit VR</button>
+        </div>
+
+        <a-entity light="" data-aframe-default-light="" aframe-injected="" position="" rotation="" scale="" visible=""></a-entity>
+        <a-entity light="" position="" data-aframe-default-light="" aframe-injected="" rotation="" scale="" visible=""></a-entity>
+
+    </a-scene>
+</body>
+
 </html>
