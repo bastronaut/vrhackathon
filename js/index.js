@@ -35,6 +35,8 @@ AFRAME.registerComponent('toggle-for', {
                 this.targetEntity.addState('toggled');
                 this.targetEntity.emit('toggleon');
                 this.targetEntity.emit('toggle');
+                document.getElementById("background").setAttribute("src", "assets/background2.jpg");
+
 
             }
         });
