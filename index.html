@@ -20,11 +20,15 @@
 
             <!-- Add your assets here to make sure they are loaded before the scene initializes -->
             <a-assets>
-                <img src="assets/deloitte.jpg"/ id="deloitte">
+              <img src="assets/sq_background1.jpg" id="sq_background1">
+              <img src="assets/sq_background2.jpg" id="sq_background2">
+              <img src="assets/sq_background3.jpg" id="sq_background3">
+
                 <img src="assets/table.jpg" id="ambassadors"/>
                 <img src="assets/person.png" id="person"/>
-                <img src="assets/background1.jpg"/ id="background1">
-                <img src="assets/background2.jpg"/ id="background2">
+                <img src="assets/background1.jpg" id="background1">
+                <img src="assets/background2.jpg" id="background2">
+                <img src="assets/background3.jpg" id="background3">
 
                 <a-asset-item id="mesh-obj" src="assets/monkey.obj"></a-asset-item>
                 <a-asset-item id="mesh-mtl" src="assets/monkey.mtl"></a-asset-item>
@@ -65,21 +69,21 @@
             <!-- box used for toggling BG1 -->
             <a-box some-component position="3.5 2 -2" height="1" width="1"
                 depth="1"
-                material="src: #deloitte; color: #fff;"
+                material="src: #sq_background1; color: #fff;"
                 class="clickable" backgroundswitch="#background1">
             </a-box>
 
             <!-- box used for toggling BG2 -->
             <a-box some-component position="3.5 2 0" height="1" width="1"
                 depth="1"
-                material="src: #deloitte; color: #fff;"
+                material="src: #sq_background2; color: #fff;"
                 class="clickable" backgroundswitch="#background2">
             </a-box>
 
             <!-- box used for toggling BG3 -->
             <a-box some-component position="3.5 2 2" height="1" width="1"
                 depth="1"
-                material="src: #deloitte; color: #fff;"
+                material="src: #sq_background3; color: #fff;"
                 class="clickable" backgroundswitch="#background3">
             </a-box>
 

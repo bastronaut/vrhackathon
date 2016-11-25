@@ -55,11 +55,8 @@ AFRAME.registerComponent('backgroundswitch', {
         this.targetEntity = this.data;
         // console.info('init data', this.data);
 
-        console.log('hier, this:');
-        console.log(this);
         this.el.addEventListener('click', evt => {
-            console.log(this.data);
-            toggleBackground();
+            toggleBackground(this.targetEntity.id);
 
             // if( this.targetEntity.is('toggled')){
             //     console.info('toggled off');
@@ -83,15 +80,16 @@ AFRAME.registerComponent('backgroundswitch', {
 
 
 
-function toggleBackground() {
+function toggleBackground(backgroundid) {
   var backgroundelement =  document.getElementById("background");
-  var background = backgroundelement.getAttribute("src");
-  console.log("the bacXkground: " + background);
-  if (background == "assets/background1.jpg" || background == "#background1") {
-    backgroundelement.setAttribute("src", "assets/background2.jpg");
-  } else {
-    backgroundelement.setAttribute("src", "assets/background1.jpg");
-  }
+  backgroundelement.setAttribute("src", "assets/"+backgroundid+".jpg");
+  // var background = backgroundelement.getAttribute("src");
+  // console.log("the bacXkground: " + background);
+  // if (background == "assets/background1.jpg" || background == "#background1") {
+  //   backgroundelement.setAttribute("src", "assets/background2.jpg");
+  // } else {
+  //   backgroundelement.setAttribute("src", "assets/background1.jpg");
+  // }
 }
 
 // example system
