@@ -16,12 +16,13 @@
 
 </head>
     <body>
-        <a-scene stats inspector antialias="true" fog="type: exponential; density: 0.15; color: #002">
+        <a-scene stats inspector antialias="true" >
 
             <!-- Add your assets here to make sure they are loaded before the scene initializes -->
             <a-assets>
                 <img src="assets/deloitte.jpg"/ id="deloitte">
                 <img src="assets/table.jpg" id="ambassadors"/>
+                <img src="assets/person.png" id="person"/>
                 <img src="assets/background1.jpg"/ id="background1">
                 <img src="assets/background2.jpg"/ id="background2">
 
@@ -31,7 +32,7 @@
 
 
             <!-- monkey mesh (OBJ file) animations get toggled using custom toggle event -->
-            <a-obj-model id="monkey"
+            <!--<a-obj-model id="monkey"
                 src="#mesh-obj"
                 mtl="#mesh-mtl"
                 position="0 1.8 0"
@@ -41,7 +42,7 @@
                 animation__scaleback="startEvents: toggleoff; easing: easeOutQuad; property: scale; to: 0.5 0.5 0.5; from: 1.0 1.0 1.0; dur: 350"
                 animation__posback="startEvents: toggleoff; easing: easeOutQuad; property: position; to: 0 1.8 0; from: 0 3 1; dur: 450">
 
-            </a-obj-model>
+            </a-obj-model>-->
 
             <!-- ground plane
             <a-plane
@@ -82,6 +83,7 @@
                 class="clickable" backgroundswitch="#background3">
             </a-box>
 
+            <a-image src="#person" width="2.6" height="2.6" position="0 2.0 -2.0"></a-image>
 
             <!-- spotlight -->
             <a-light
