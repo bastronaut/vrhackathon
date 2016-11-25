@@ -20,22 +20,22 @@
 
             <!-- Add your assets here to make sure they are loaded before the scene initializes -->
             <a-assets>
-                <img src="/assets/deloitte.jpg"/ id="deloitte">
-                <img src="/assets/ambassadors.png" id="ambassadors"/>
+                <img src="assets/deloitte.jpg"/ id="deloitte">
+                <img src="assets/table.jpg" id="ambassadors"/>
                 <img src="http://ybinstock.github.io/concert_hall_360/concerthall.jpg"/ id="sky">
 
-                <a-asset-item id="mesh-obj" src="/assets/monkey.obj"></a-asset-item>
-                <a-asset-item id="mesh-mtl" src="/assets/monkey.mtl"></a-asset-item>
+                <a-asset-item id="mesh-obj" src="assets/monkey.obj"></a-asset-item>
+                <a-asset-item id="mesh-mtl" src="assets/monkey.mtl"></a-asset-item>
             </a-assets>
 
 
             <!-- box uses custom toggle-for component to toggle the monkey model -->
             <a-box
                 some-component
-                position="0 1 0"
-                height="2"
-                width="2"
-                depth="2"
+                position="3 0.5 0"
+                height="1"
+                width="1"
+                depth="1"
                 rotation="0 45 0"
                 material="src: #deloitte; color: #fff; roughness: 0.2; metalness: 0.5"
                 class="clickable"
@@ -55,14 +55,14 @@
 
             </a-obj-model>
 
-            <!-- ground plane-->
+            <!-- ground plane
             <a-plane
                 position="0 -0.01 0"
                 rotation="-90 0 0"
                 width="200"
                 height="200"
                 material="color: #3f3b00; roughness: 0.6; metalness: 0.2">
-            </a-plane>
+            </a-plane>-->
 
             <!-- floor with logo-->
             <a-plane
