@@ -26,6 +26,7 @@
                 <img src="assets/background1.jpg"/ id="background1">
                 <img src="assets/background2.jpg"/ id="background2">
 
+
                 <a-asset-item id="mesh-obj" src="assets/monkey.obj"></a-asset-item>
                 <a-asset-item id="mesh-mtl" src="assets/monkey.mtl"></a-asset-item>
             </a-assets>
@@ -53,6 +54,8 @@
                 material="color: #3f3b00; roughness: 0.6; metalness: 0.2">
             </a-plane>-->
 
+            <a-entity id="river" geometry="primitive: plane" loop="true" material="color: blue"
+            position="-10 0 0" sound="src: url(assets/music.mp3); autoplay: true"></a-entity>
 
             <!-- Table -->
             <a-box material="src: #ambassadors;" depth="8" height="0.5" width="4" position="0 0 -2"></a-box>
