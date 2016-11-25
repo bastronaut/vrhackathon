@@ -1,0 +1,28 @@
+{
+  "name": "aframe-hello-world-boilerplate",
+  "description": "Boilerplate with A-Frame's 'Hello, World!' of WebVR.",
+  "version": "0.3.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "budo  js/index.js:build/bundle.js --live --verbose --port 3000 --open --watch-glob '**/*.{html,css,js}' -- -t babelify",
+    "build": "echo \"\nBuild system not in place\n\"",
+    "help": "cat README.md",
+    "postinstall": "npm run help"
+  },
+  "devDependencies": {
+    "babelify": "^7.3.0",
+    "budo": "^7.0.0"
+  },
+  "keywords": [
+    "aframe",
+    "aframe-example",
+    "aframe-boilerplate",
+    "aframe-scene",
+    "webvr",
+    "vr"
+  ],
+  "dependencies": {
+    "aframe": "^0.3.2",
+    "aframe-animation-component": "^3.0.4"
+  }
+}

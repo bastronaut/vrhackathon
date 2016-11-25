@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Hello, World! - A-Frame</title>
+    <meta name="description" content="Hello, World! - A-Frame">
+    <script>
+        window.WebVRConfig = {
+            FORCE_ENABLE_VR: true, // Default: false.
+            // CARDBOARD_UI_DISABLED: false,
+            // BUFFER_SCALE: 2.0
+        };
+    </script>
+
+    <script src="build/bundle.js"></script>
+
+</head>
+    <body>
+        <a-scene stats inspector antialias="true" fog="type: exponential; density: 0.15; color: #002">
+
+            <!-- Add your assets here to make sure they are loaded before the scene initializes -->
+            <a-assets>
+                <img src="/assets/deloitte.jpg"/ id="deloitte">
+                <img src="/assets/ambassadors.png" id="ambassadors"/>
+                <img src="http://ybinstock.github.io/concert_hall_360/concerthall.jpg"/ id="sky">
+
+                <a-asset-item id="mesh-obj" src="/assets/monkey.obj"></a-asset-item>
+                <a-asset-item id="mesh-mtl" src="/assets/monkey.mtl"></a-asset-item>
+            </a-assets>
+
+
+            <!-- box uses custom toggle-for component to toggle the monkey model -->
+            <a-box
+                some-component
+                position="0 1 0"
+                height="2"
+                width="2"
+                depth="2"
+                rotation="0 45 0"
+                material="src: #deloitte; color: #fff; roughness: 0.2; metalness: 0.5"
+                class="clickable"
+                toggle-for="#monkey">
+            </a-box>
+
+            <!-- monkey mesh (OBJ file) animations get toggled using custom toggle event -->
+            <a-obj-model id="monkey"
+                src="#mesh-obj"
+                mtl="#mesh-mtl"
+                position="0 1.8 0"
+                scale="0.5 0.5 0.5"
+                animation__scale="startEvents: toggleon; easing: easeOutElastic; elasticity: 400 ; property: scale; from: 0.5 0.5 0.5; to: 1.0 1.0 1.0; dur: 550;"
+                animation__pos="startEvents: toggleon; easing: easeOutElastic; elasticity: 200 ; property: position; from: 0 1.8 0; to: 0 3 1; dur: 650"
+                animation__scaleback="startEvents: toggleoff; easing: easeOutQuad; property: scale; to: 0.5 0.5 0.5; from: 1.0 1.0 1.0; dur: 350"
+                animation__posback="startEvents: toggleoff; easing: easeOutQuad; property: position; to: 0 1.8 0; from: 0 3 1; dur: 450">
+
+            </a-obj-model>
+
+            <!-- ground plane-->
+            <a-plane
+                position="0 -0.01 0"
+                rotation="-90 0 0"
+                width="200"
+                height="200"
+                material="color: #3f3b00; roughness: 0.6; metalness: 0.2">
+            </a-plane>
+
+            <!-- floor with logo-->
+            <a-plane
+                rotation="-90 0 0"
+                width="8"
+                height="8"
+                material="src: #ambassadors; color: #fff; roughness: 0.6; metalness: 0.2">
+            </a-plane>
+
+            <!-- spotlight -->
+            <a-light
+                rotation="-70 0 0"
+                angle="60"
+                type="spot"
+                color="rgb(235, 208, 169)"
+                position="0 5 2 "
+                penumbra="0.2">
+            </a-light>
+
+
+            <a-entity light="type: hemisphere; color: #04273B; groundColor: #3f3b00; intensity: 2"></a-entity>
+
+            <!-- skybox with equirectangular texture projection -->
+            <a-sky color="#e7e6dd" src="#sky" material="fog: false"></a-sky>
+
+            <!-- camera wrapped in entity so we can offset the position (workaround) -->
+            <a-entity position="0 0 4">
+                <a-camera>
+                    <!-- Inner cursor uses events to trigger animations-->
+                    <a-entity
+                        raycaster="objects: .clickable"
+                        cursor="fuse: true; fuseTimeout: 1500"
+                        position="0 0 -1"
+                        geometry="primitive: ring; radiusInner: 0.08; radiusOuter: 0.1"
+                        material="color: white; shader: flat; opacity: 0.2; transparent: true"
+                        animation__fusescale="startEvents: mouseenter;  pauseEvents: mouseleave; easing: easeOutQuad; property: scale; from: 1 1 1; to: 0.2 0.2 0.2; dur: 1500"
+                        animation__fuseopacity="startEvents: mouseenter;  pauseEvents: mouseleave; easing: easeOutQuad; property: material.opacity; to: 1.0; dur: 1000"
+                        animation__clickscale="startEvents: click; easing: easeOutElastic; property: scale; from: 0.2 0.2 0.2; to: 1.0 1.0 1.0; dur: 350"
+                        animation__clickopacity="startEvents: click; easing: easeOutQuad; property: material.opacity; from: 1.0; to: 0.2; dur: 100"
+                        animation__leavescale="startEvents: mouseleave; easing: easeOutQuint; property: scale; from: 0.2 0.2 0.2; to: 1.0 1.0 1.0; dur: 550"
+                        animation__leaveopacity="startEvents: mouseleave; easing: easeOutQuad; property: material.opacity; from: 0.0; to: 0.2; dur: 550">
+
+                    </a-entity>
+                </a-camera>
+            </a-entity>
+        </a-scene>
+    </body>
+</html>
