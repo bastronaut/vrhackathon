@@ -14,8 +14,41 @@ require('aframe-animation-component');
 console.info('PRESS [CTRL] + [ALT] + I to start Aframe inspector');
 
 
+// //example component
+// AFRAME.registerComponent('toggle-for', {
+//     schema: {type: 'selector'},
+//     init: function() {
+//
+//         this.targetEntity = this.data;
+//         // console.info('init data', this.data);
+//
+//         this.el.addEventListener('click', evt => {
+//             // console.log(this.data);
+//             toggleBackground();
+//
+//             if( this.targetEntity.is('toggled')){
+//                 console.info('toggled off');
+//                 this.targetEntity.removeState('toggled');
+//                 this.targetEntity.emit('toggleoff');
+//                 this.targetEntity.emit('toggle');
+//             }else{
+//                 console.info('toggled on');
+//                 this.targetEntity.addState('toggled');
+//                 this.targetEntity.emit('toggleon');
+//                 this.targetEntity.emit('toggle');
+//             }
+//         });
+//     },
+//     tick: function(t,dt){
+//         //console.log(t,dt)
+//     },
+//     remove: function() {
+//     }
+// });
+
+
 //example component
-AFRAME.registerComponent('toggle-for', {
+AFRAME.registerComponent('backgroundswitch', {
     schema: {type: 'selector'},
     init: function() {
 
@@ -23,21 +56,19 @@ AFRAME.registerComponent('toggle-for', {
         // console.info('init data', this.data);
 
         this.el.addEventListener('click', evt => {
-            // console.log(this.data);
-            toggleBackground();
+            toggleBackground(this.targetEntity.id);
 
-            if( this.targetEntity.is('toggled')){
-                console.info('toggled off');
-                this.targetEntity.removeState('toggled');
-                this.targetEntity.emit('toggleoff');
-                this.targetEntity.emit('toggle');
-
-            }else{
-                console.info('toggled on');
-                this.targetEntity.addState('toggled');
-                this.targetEntity.emit('toggleon');
-                this.targetEntity.emit('toggle');
-            }
+            // if( this.targetEntity.is('toggled')){
+            //     console.info('toggled off');
+            //     this.targetEntity.removeState('toggled');
+            //     this.targetEntity.emit('toggleoff');
+            //     this.targetEntity.emit('toggle');
+            // }else{
+            //     console.info('toggled on');
+            //     this.targetEntity.addState('toggled');
+            //     this.targetEntity.emit('toggleon');
+            //     this.targetEntity.emit('toggle');
+            // }
         });
     },
     tick: function(t,dt){
@@ -47,15 +78,18 @@ AFRAME.registerComponent('toggle-for', {
     }
 });
 
-function toggleBackground() {
+
+
+function toggleBackground(backgroundid) {
   var backgroundelement =  document.getElementById("background");
-  var background = backgroundelement.getAttribute("src");
-  console.log("the background: " + background);
-  if (background == "assets/background1.jpg" || background == "#background1") {
-    backgroundelement.setAttribute("src", "assets/background2.jpg");
-  } else {
-    backgroundelement.setAttribute("src", "assets/background1.jpg");
-  }
+  backgroundelement.setAttribute("src", "assets/"+backgroundid+".jpg");
+  // var background = backgroundelement.getAttribute("src");
+  // console.log("the bacXkground: " + background);
+  // if (background == "assets/background1.jpg" || background == "#background1") {
+  //   backgroundelement.setAttribute("src", "assets/background2.jpg");
+  // } else {
+  //   backgroundelement.setAttribute("src", "assets/background1.jpg");
+  // }
 }
 
 // example system
