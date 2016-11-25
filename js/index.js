@@ -20,10 +20,12 @@ AFRAME.registerComponent('toggle-for', {
     init: function() {
 
         this.targetEntity = this.data;
-        console.info('init data', this.data);
+        // console.info('init data', this.data);
 
         this.el.addEventListener('click', evt => {
-            console.log(this.data);
+            // console.log(this.data);
+            toggleBackground();
+
             if( this.targetEntity.is('toggled')){
                 console.info('toggled off');
                 this.targetEntity.removeState('toggled');
@@ -35,17 +37,6 @@ AFRAME.registerComponent('toggle-for', {
                 this.targetEntity.addState('toggled');
                 this.targetEntity.emit('toggleon');
                 this.targetEntity.emit('toggle');
-
-                var background =  document.getElementById("background");
-
-                if (background.getAttribute("src") == "assets/background1.jpg" ) {
-                  background.setAttribute("src", "assets/background2.jpg");
-                } else {
-                  background.setAttribute("src", "assets/background1.jpg");
-                }
-                background.setAttribute("src", "assets/background2.jpg");
-
-
             }
         });
     },
@@ -55,6 +46,17 @@ AFRAME.registerComponent('toggle-for', {
     remove: function() {
     }
 });
+
+function toggleBackground() {
+  var backgroundelement =  document.getElementById("background");
+  var background = backgroundelement.getAttribute("src");
+  console.log("the background: " + background);
+  if (background == "assets/background1.jpg" || background == "#background1") {
+    backgroundelement.setAttribute("src", "assets/background2.jpg");
+  } else {
+    backgroundelement.setAttribute("src", "assets/background1.jpg");
+  }
+}
 
 // example system
 AFRAME.registerSystem('some-system', {
