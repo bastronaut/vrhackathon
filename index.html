@@ -22,7 +22,8 @@
             <a-assets>
                 <img src="assets/deloitte.jpg"/ id="deloitte">
                 <img src="assets/table.jpg" id="ambassadors"/>
-                <img src="http://ybinstock.github.io/concert_hall_360/concerthall.jpg"/ id="sky">
+                <img src="assets/background1.jpg"/ id="background1">
+                <img src="assets/background2.jpg"/ id="background2">
 
                 <a-asset-item id="mesh-obj" src="assets/monkey.obj"></a-asset-item>
                 <a-asset-item id="mesh-mtl" src="assets/monkey.mtl"></a-asset-item>
@@ -86,7 +87,7 @@
             <a-entity light="type: hemisphere; color: #04273B; groundColor: #3f3b00; intensity: 2"></a-entity>
 
             <!-- skybox with equirectangular texture projection -->
-            <a-sky color="#e7e6dd" src="#sky" material="fog: false"></a-sky>
+            <a-sky color="#e7e6dd" src="#background1" id="background" material="fog: false"></a-sky>
 
             <!-- camera wrapped in entity so we can offset the position (workaround) -->
             <a-entity position="0 0 4">
